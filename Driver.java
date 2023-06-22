@@ -20,11 +20,11 @@ to interact with the social network and perform various operations on profiles a
 import java.util.Scanner;
 
 public class Driver {
-    private static UndirectedGraph<Profile> socialNetwork = new UndirectedGraph<>();
     public static void main(String[] args) {
-
+        SocialNetwork socialNetwork = new SocialNetwork();
         Scanner scanner = new Scanner(System.in);
-
+        UndirectedGraph<String> graph = new UndirectedGraph<>();
+        //this graph is the graph of friends
         while (true) {
             try {
                 System.out.println("\nThe Social Network");
@@ -85,29 +85,18 @@ public class Driver {
                             default:
                                 joinStatus = "";
                         }
-
-                        socialNetwork.addVertex(new Profile(joinName, joinImage, joinStatus));
+                        socialNetwork.joinNetwork(joinName, joinImage, joinStatus);
+                        graph.addVertex(joinName);
                         break;
                     case 2:
                         System.out.print("Enter name: ");
                         String leaveName = scanner.nextLine();
-                        Profile leaveProfile = new Profile(leaveName, "", "");
-                        //remove profile from network
-                        socialNetwork.removeVertex(leaveProfile);
+                        socialNetwork.leaveNetwork(leaveName);
+                        graph.removeVertex(leaveName);
                         break;
                     case 3:
-                        System.out.print("Enter your name: (your name should be in the network) ");
+                        System.out.print("Enter name: ");
                         String updateName = scanner.nextLine();
-                        //find profile in network
-                        Profile updateProfile = new Profile(updateName, "", "");
-                        //update profile
-                        while(!socialNetwork.hasVertex(updateProfile)){
-                            System.out.print("Your name is not in the network. Please enter your name again: ");
-                            updateName = scanner.nextLine();
-                            updateProfile = new Profile(updateName, "", "");
-                        }
-                        socialNetwork.removeVertex(updateProfile);
-                        //remove the old profile first
                         System.out.print("Enter new image: ");
                         String newImage = scanner.nextLine();
 
@@ -148,62 +137,37 @@ public class Driver {
                             default:
                                 newStatus = "";
                         }
-                        updateProfile.setImage(newImage);
-                        updateProfile.setStatus(newStatus);
-                        socialNetwork.addVertex(updateProfile);
+
+                        socialNetwork.updateProfile(updateName, newImage, newStatus);
                         break;
                     case 4:
                         System.out.print("Enter name: ");
                         String addName = scanner.nextLine();
-                        Profile addProfile = new Profile(addName, "", "");
-                        while(!socialNetwork.hasVertex(addProfile)){
-                            System.out.print("Your name is not in the network. Please enter your name again: ");
-                            addName = scanner.nextLine();
-                            addProfile = new Profile(addName, "", "");
-                        }
                         System.out.print("Enter friend's name: ");
                         String friendName = scanner.nextLine();
-                        Profile friendProfile = new Profile(friendName, "", "");
-                        while(!socialNetwork.hasVertex(friendProfile)){
-                            System.out.print("Your friend's name is not in the network. Please enter your friend's name again: ");
-                            friendName = scanner.nextLine();
-                            friendProfile = new Profile(friendName, "", "");
-                        }
-                        socialNetwork.addEdge(addProfile, friendProfile);
+                        socialNetwork.addFriend(addName, friendName);
+                        graph.addEdge(addName, friendName);
                         break;
                     case 5:
                         System.out.print("Enter name: ");
                         String removeName = scanner.nextLine();
-                        Profile removeProfile = new Profile(removeName, "", "");
-                        while(!socialNetwork.hasVertex(removeProfile)){
-                            System.out.print("Your name is not in the network. Please enter your name again: ");
-                            removeName = scanner.nextLine();
-                            removeProfile = new Profile(removeName, "", "");
-                        }
                         System.out.print("Enter friend's name: ");
                         String removeFriendName = scanner.nextLine();
-                        Profile removeFriendProfile = new Profile(removeFriendName, "", "");
-                        while(!socialNetwork.hasVertex(removeFriendProfile)){
-                            System.out.print("Your friend's name is not in the network. Please enter your friend's name again: ");
-                            removeFriendName = scanner.nextLine();
-                            removeFriendProfile = new Profile(removeFriendName, "", "");
-                        }
-                        socialNetwork.removeEdge(removeProfile, removeFriendProfile);
+                        socialNetwork.removeFriend(removeName, removeFriendName);
+                        if(graph.hasEdge(removeName, removeFriendName))
+                            graph.removeEdge(removeName, removeFriendName);
+                        else
+                            System.out.println("No such friend exists!");
                         break;
                     case 6:
                         System.out.print("Enter name to search: ");
                         String searchName = scanner.nextLine();
-                        Profile searchProfile = new Profile(searchName, "", "");
-                        while(!socialNetwork.hasVertex(searchProfile)){
-                            System.out.print("Your name is not in the network. Please enter your name again: ");
-                            searchName = scanner.nextLine();
-                            searchProfile = new Profile(searchName, "", "");
-                        }
-                        System.out.println("Friends of " + searchName + ":");
-                        searchProfile.printProfile();
+                        socialNetwork.searchProfile(searchName);
                         break;
                     case 7:
-                        socialNetwork.displayEdges();
+                        socialNetwork.displayNetwork();
+                        System.out.println("Friendship Graph: ");
+                        graph.printGraph();
                         break;
                     case 8:
                         System.out.println("\nThanks for using \"Better Call Stack\" Social Network!\n"
