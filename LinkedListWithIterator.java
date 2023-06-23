@@ -12,7 +12,7 @@ public class LinkedListWithIterator<T>
         implements ListWithIteratorInterface<T>
 {
     private Node firstNode;
-    private int  numberOfEntries;;
+    private int  numberOfEntries;
 
     public LinkedListWithIterator()
     {
