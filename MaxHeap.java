@@ -6,7 +6,7 @@ import java.util.Arrays;
  @author Timothy M. Henry
  @version 4.0
  */
-public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterface<T>
+public class MaxHeap<T> extends Comparable<? super T>> implements MaxHeapInterface<T>
 {
         private T[] heap;// Array of heap entries
         private int lastIndex; // Index of last entry and number of entries
