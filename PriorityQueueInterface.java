@@ -5,7 +5,7 @@
  @author Timothy M. Henry
  @version 4.0
  */
-public interface PriorityQueueInterface<T extends Comparable<? super T>>
+public interface PriorityQueueInterface<T> extends Comparable<? super T>>
 {
     /** Adds a new entry to this priority queue.
      @param newEntry  An object to be added. */
