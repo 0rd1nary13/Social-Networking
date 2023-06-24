@@ -3,7 +3,7 @@ Group Name: "Better Call Stack".
 Members: Linh Pham, Huiguang Ma, Java Singh and Vincent Xayasak.
 Class Section: CIS 22C 46796
 Instructor: Mirsaeid Abolghasemi
-Date: 5/28/23 
+Date: 6/23/23 
 
 The given code represents a social network implementation using Java classes.
 The `Profile` class defines a user profile with attributes such as name, image, status,
