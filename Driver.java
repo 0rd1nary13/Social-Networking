@@ -3,7 +3,7 @@ Group Name: "Better Call Stack".
 Members: Linh Pham, Huiguang Ma, Java Singh and Vincent Xayasak.
 Class Section: CIS 22C 46796
 Instructor: Mirsaeid Abolghasemi
-Date: 5/28/23
+Date: 6/23/23
 
 The given code represents the driver class for a social network application. It
 utilizes the `SocialNetwork` class to provide a user interface through the command line.
