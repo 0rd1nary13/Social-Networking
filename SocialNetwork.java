@@ -3,7 +3,7 @@ Group Name: "Better Call Stack".
 Members: Linh Pham, Huiguang Ma, Java Singh and Vincent Xayasak.
 Class Section: CIS 22C 46796
 Instructor: Mirsaeid Abolghasemi
-Date: 6/23/23 
+Date: 6/23/23
 
 The given code represents a social network implementation using Java classes.
 The `Profile` class defines a user profile with attributes such as name, image, status,
@@ -166,6 +166,19 @@ public class SocialNetwork {
         System.out.println("Network Members:");
         for (Profile profile : profiles) {
             System.out.println(profile.getName());
+        }
+    }
+
+    public void displayFriends(String name) {
+        Profile profile = profileDictionary.getValue(name);
+        if (profile != null) {
+            System.out.println("Friends:");
+            ArrayList<Profile> friendList = profile.getFriends();
+            for (Profile friend : friendList) {
+                System.out.println(friend.getName());
+            }
+        } else {
+            System.out.println("Profile not found.");
         }
     }
 }
