@@ -35,7 +35,8 @@ public class Driver {
                 System.out.println("5. Remove Friend");
                 System.out.println("6. Search Profile");
                 System.out.println("7. Display Network");
-                System.out.println("8. Exit");
+                System.out.println("8. Display Friend's Friends");
+                System.out.println("9. Exit");
                 System.out.print("Enter your choice: ");
 
                 int choice = scanner.nextInt();
@@ -170,6 +171,18 @@ public class Driver {
                         graph.printGraph();
                         break;
                     case 8:
+                        System.out.println("Enter name: ");
+                        String yourName = scanner.nextLine();
+                        System.out.println("Enter friend's name: ");
+                        String friendName2 = scanner.nextLine();
+                        //if friendName2 is not a friend of yourName
+                        if( !graph.hasEdge(yourName, friendName2) )
+                            System.out.println("No such friend exists!");
+                        else
+                            //print all friends of friendName2
+                            socialNetwork.displayFriends(friendName2);
+                        break;
+                    case 9:
                         System.out.println("\nThanks for using \"Better Call Stack\" Social Network!\n"
                                 + "Hope to see you soon. Goodbye!\n");
                         scanner.close();
@@ -185,3 +198,184 @@ public class Driver {
         }
     }
 }
+
+
+/*
+Sample Output:
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 1
+Enter name: a
+Enter image: w
+Status:
+1. Online
+2. Offline
+3. Busy
+Pick A Choice (1-3): 2
+Joined the network.
+
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 1
+Enter name: b
+Enter image: e
+Status:
+1. Online
+2. Offline
+3. Busy
+Pick A Choice (1-3): 3
+Joined the network.
+
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 1
+Enter name: c
+Enter image: r
+Status:
+1. Online
+2. Offline
+3. Busy
+Pick A Choice (1-3): 1
+Joined the network.
+
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 4
+Enter name:
+Enter friend's name: a
+Profile(s) not found.
+
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 4
+Enter name: a
+Enter friend's name: b
+Friend added.
+
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 4
+Enter name: c
+Enter friend's name: b
+Friend added.
+
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 4
+Enter name: a
+Enter friend's name: c
+Friend added.
+
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 8
+Enter name:
+a
+Enter friend's name:
+c
+Friends:
+b
+a
+
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 7
+Network Members:
+a
+b
+c
+Friendship Graph:
+c b 0.0 a 0.0
+b a 0.0 c 0.0
+a b 0.0 c 0.0
+
+The Social Network
+1. Join Network
+2. Leave Network
+3. Update Profile
+4. Add Friend
+5. Remove Friend
+6. Search Profile
+7. Display Network
+8. Display Friend's Friends
+9. Exit
+Enter your choice: 9
+
+Thanks for using "Better Call Stack" Social Network!
+Hope to see you soon. Goodbye!
+
+
+Process finished with exit code 0
+*/
