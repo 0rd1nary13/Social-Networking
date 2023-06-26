@@ -45,12 +45,9 @@ public class DirectedGraph<T> implements GraphInterface<T>
         } // end while
     } // end resetVertices
 
-    public boolean hasVertex(T vertexLabel)
-    {
+    public boolean hasVertex(T vertexLabel) {
         return vertices.contains(vertexLabel);
-    } // end hasVertex
-
-
+    }
     @Override
     public QueueInterface<T> getBreadthFirstTraversal(T origin) {
         resetVertices();
@@ -347,6 +344,15 @@ public class DirectedGraph<T> implements GraphInterface<T>
         vertices.clear();
         edgeCount = 0;
     }
+
+    public void printGraph() {
+        //print graph
+        Iterator<VertexInterface<T>> vertexIterator = vertices.getValueIterator();
+        while (vertexIterator.hasNext()) {
+            ((Vertex<T>) (vertexIterator.next())).display();
+        }
+    }
+
 
     private class EntryPQ implements Comparable<EntryPQ>
     {
