@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Iterator;
 /**
@@ -41,62 +40,6 @@ public class UndirectedGraph<T> extends DirectedGraph<T> implements GraphInterfa
 
 
 } // end UndirectedGraph
-class Profile {
-    private String name;
-    private String image;
-    private String status;
-    private ArrayList<Profile> friends;
-
-    public Profile(String name, String image, String status) {
-        this.name = name;
-        this.image = image;
-        this.status = status;
-        this.friends = new ArrayList<>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public ArrayList<Profile> getFriends() {
-        return friends;
-    }
-
-    public void addFriend(Profile friend) {
-        friends.add(friend);
-    }
-
-    public void removeFriend(Profile friend) {
-        friends.remove(friend);
-    }
-
-    public void printProfile() {
-        System.out.println("Name: " + name);
-        System.out.println("Image: " + image);
-        System.out.println("Status: " + status);
-        System.out.println("Friends: ");
-        for (Profile friend : friends) {
-            System.out.println(friend.getName());
-        }
-    }
-}
-
 
 // To make addEdge more efficient, DirectedGraph needs to provide accessors
 // to its data fields. (See Project 3, Chapter 29.)

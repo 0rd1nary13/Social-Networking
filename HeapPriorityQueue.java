@@ -1,4 +1,3 @@
-
 /**
  A class that implements the ADT priority queue by using a maxheap.
 
@@ -6,7 +5,7 @@
  @author Timothy M. Henry
  @version 4.0
  */
-public final class HeapPriorityQueue<T> extends Comparable<? super T>>
+public final class HeapPriorityQueue<T extends Comparable<? super T>>
         implements PriorityQueueInterface<T>
 {
     private MaxHeapInterface<T> pq;

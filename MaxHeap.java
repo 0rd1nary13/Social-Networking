@@ -6,7 +6,7 @@ import java.util.Arrays;
  @author Timothy M. Henry
  @version 4.0
  */
-public class MaxHeap<T> extends Comparable<? super T>> implements MaxHeapInterface<T>
+public class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterface<T>
 {
         private T[] heap;// Array of heap entries
         private int lastIndex; // Index of last entry and number of entries
@@ -25,7 +25,7 @@ public class MaxHeap<T> extends Comparable<? super T>> implements MaxHeapInterfa
         
         // The cast is safe because the new array contains null entries
         @SuppressWarnings("unchecked")
-T[] tempHeap = (T[])new Comparable[initialCapacity + 1];
+        T[] tempHeap = (T[])new Comparable[initialCapacity + 1];
         heap = tempHeap;
         lastIndex = 0;
         initialized = true;
@@ -37,7 +37,7 @@ T[] tempHeap = (T[])new Comparable[initialCapacity + 1];
         
         // The cast is safe because the new array contains null entries
         @SuppressWarnings("unchecked")
-T[] tempHeap = (T[]) new Comparable[entries.length + 1];
+        T[] tempHeap = (T[]) new Comparable[entries.length + 1];
         heap = tempHeap;
         lastIndex = entries.length;
 
@@ -152,7 +152,7 @@ T[] tempHeap = (T[]) new Comparable[entries.length + 1];
         // Precondition: checkInitialization has been called.
         private void ensureCapacity()
         {
-        if (lastIndex >= heap.length)
+        if (lastIndex >= heap.length - 1)
         {
         int newCapacity = 2 * heap.length;
         checkCapacity(newCapacity);
@@ -178,4 +178,4 @@ T[] tempHeap = (T[]) new Comparable[entries.length + 1];
         "whose capacity is larger than " +
         MAX_CAPACITY);
         } // end checkCapacity
-        } // end MaxHeap
+} // end MaxHeap

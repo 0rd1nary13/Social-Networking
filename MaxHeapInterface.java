@@ -1,4 +1,3 @@
-
 /**
  An interface for the ADT maxheap.
 
@@ -6,7 +5,7 @@
  @author Timothy M. Henry
  @version 4.0
  */
-public interface MaxHeapInterface<T> extends Comparable<? super T>>
+public interface MaxHeapInterface<T extends Comparable<? super T>>
 {
     /** Adds a new entry to this heap.
      @param newEntry  An object to be added. */
